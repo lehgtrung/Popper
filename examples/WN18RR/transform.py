@@ -7,7 +7,7 @@ import re
 def load_data(path):
     data = pd.read_csv(path, sep='\t', dtype=str)
     data.columns = ['head', 'relation', 'tail']
-    data['relation'] = data['relation'].apply(lambda x: x.strip('_'))
+    data['relation'] = data['relation'].apply(lambda x: x.strip('_').replace('_',''))
     return data
 
 
@@ -55,7 +55,7 @@ def output_exs(predicates, pred_to_learn):
 
 
 if __name__ == '__main__':
-    pred_to_learn = 'derivationally_related_form'
+    pred_to_learn = 'derivationallyrelatedform'
     data = load_data('train.txt')
     predicates = convert_to_predicates(data)
     output_bk(predicates, pred_to_learn)
