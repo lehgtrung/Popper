@@ -4,10 +4,15 @@ import argparse
 import re
 
 
+def convert_to_camel_case(name):
+    return ''.join([e.capitalize() for e in name.split('_')])
+
+
 def load_data(path):
     data = pd.read_csv(path, sep='\t', dtype=str)
     data.columns = ['head', 'relation', 'tail']
     data['relation'] = data['relation'].apply(lambda x: x.strip('_'))
+    data['relation'] = data['relation'].apply(lambda x: convert_to_camel_case(x))
     return data
 
 
@@ -42,9 +47,9 @@ def output_bias(data, pred_to_learn):
         if not pred.startswith(pred_to_learn):
             pos.append(f'body_pred({pred},2).')
 
-    for pred in tqdm(predicate_list):
-        if not pred.startswith(pred_to_learn):
-            pos.append(f':- discontiguous {pred}/2.')
+    # for pred in tqdm(predicate_list):
+    #     if not pred.startswith(pred_to_learn):
+    #         pos.append(f':- discontiguous {pred}/2.')
 
     with open('bias.pl', 'w') as f:
         f.writelines([e + '\n' for e in pos])
@@ -60,7 +65,7 @@ def output_exs(predicates, pred_to_learn):
 
 
 if __name__ == '__main__':
-    pred_to_learn = 'derivationally_related_form'
+    pred_to_learn = 'DerivationallyRelatedForm'
     data = load_data('train.txt')
     predicates = convert_to_predicates(data)
     output_bk(predicates, pred_to_learn)
