@@ -7,13 +7,14 @@ import re
 def load_data(path):
     data = pd.read_csv(path, sep='\t', dtype=str)
     data.columns = ['head', 'relation', 'tail']
+    data['relation'] = data['relation'].apply(lambda x: x.strip('_'))
     return data
 
 
 def convert_to_predicates(data):
     result = []
     for i, row in data.iterrows():
-        result.append(f'{row["relation"]}(E{row["head"]},E{row["tail"]})')
+        result.append(f'{row["relation"]}(e{row["head"]},e{row["tail"]})')
     return result
 
 
@@ -54,7 +55,7 @@ def output_exs(predicates, pred_to_learn):
 
 
 if __name__ == '__main__':
-    pred_to_learn = '_derivationally_related_form'
+    pred_to_learn = 'derivationally_related_form'
     data = load_data('train.txt')
     predicates = convert_to_predicates(data)
     output_bk(predicates, pred_to_learn)
