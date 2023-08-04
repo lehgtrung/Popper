@@ -47,9 +47,9 @@ def output_bias(data, pred_to_learn):
         if not pred.startswith(pred_to_learn):
             pos.append(f'body_pred({pred},2).')
 
-    # for pred in tqdm(predicate_list):
-    #     if not pred.startswith(pred_to_learn):
-    #         pos.append(f':- discontiguous {pred}/2.')
+    for pred in tqdm(predicate_list):
+        if not pred.startswith(pred_to_learn):
+            pos.append(f':- discontiguous {pred}/2.')
 
     with open('bias.pl', 'w') as f:
         f.writelines([e + '\n' for e in pos])
