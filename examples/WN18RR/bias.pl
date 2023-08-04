@@ -11,13 +11,3 @@ body_pred(memberOfDomainUsage,2).
 body_pred(memberOfDomainRegion,2).
 body_pred(verbGroup,2).
 body_pred(similarTo,2).
-:- discontiguous instanceHypernym/2.
-:- discontiguous hypernym/2.
-:- discontiguous alsoSee/2.
-:- discontiguous memberMeronym/2.
-:- discontiguous synsetDomainTopicOf/2.
-:- discontiguous hasPart/2.
-:- discontiguous memberOfDomainUsage/2.
-:- discontiguous memberOfDomainRegion/2.
-:- discontiguous verbGroup/2.
-:- discontiguous similarTo/2.
