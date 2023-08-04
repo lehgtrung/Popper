@@ -1,0 +1,13 @@
+max_clauses(100).
+enable_recursion.
+head_pred(_derivationally_related_form,2).
+body_pred(_instance_hypernym,2).
+body_pred(_hypernym,2).
+body_pred(_also_see,2).
+body_pred(_member_meronym,2).
+body_pred(_synset_domain_topic_of,2).
+body_pred(_has_part,2).
+body_pred(_member_of_domain_usage,2).
+body_pred(_member_of_domain_region,2).
+body_pred(_verb_group,2).
+body_pred(_similar_to,2).
