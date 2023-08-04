@@ -1,3 +1,14 @@
+:- discontiguous instanceHypernym/2.
+:- discontiguous hypernym/2.
+:- discontiguous alsoSee/2.
+:- discontiguous memberMeronym/2.
+:- discontiguous synsetDomainTopicOf/2.
+:- discontiguous hasPart/2.
+:- discontiguous memberOfDomainUsage/2.
+:- discontiguous memberOfDomainRegion/2.
+:- discontiguous verbGroup/2.
+:- discontiguous similarTo/2.
+
 instanceHypernym(e09322930,e09360122).
 hypernym(e01455754,e01974062).
 hypernym(e07554856,e07553301).
