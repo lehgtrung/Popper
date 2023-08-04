@@ -5,7 +5,7 @@ import re
 
 
 def convert_to_camel_case(name):
-    return ''.join([e.capitalize() for e in name.split('_')])
+    return name.split('_')[0] + ''.join([e.capitalize() for e in name.split('_')[1:]])
 
 
 def load_data(path):
@@ -65,7 +65,7 @@ def output_exs(predicates, pred_to_learn):
 
 
 if __name__ == '__main__':
-    pred_to_learn = 'DerivationallyRelatedForm'
+    pred_to_learn = 'derivationallyRelatedForm'
     data = load_data('train.txt')
     predicates = convert_to_predicates(data)
     output_bk(predicates, pred_to_learn)
